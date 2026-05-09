@@ -1,0 +1,52 @@
+# ============================================================
+# Vivado / Xilinx — fichiers générés à exclure
+# ============================================================
+
+# Dossiers de projet Vivado
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.gen/
+*.str/
+
+# Fichiers de synthèse et implémentation
+*.bit
+*.dcp
+*.ltx
+*.xpr
+*.vdi
+*.pb
+*.rpt
+*.rpx
+*.log
+*.jou
+
+# Fichiers temporaires Vivado
+.Xil/
+*.hdi
+*.wdf
+*.lpr
+*.wpc
+*.mem
+*.xml
+htr.txt
+ISEWrap.*
+*.tcl
+!scripts/*.tcl
+
+# Checkpoints et netlists
+*.edf
+*.edif
+*.ngc
+*.ngd
+
+# Système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
