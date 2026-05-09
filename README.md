@@ -1,4 +1,4 @@
-# Travaux Pratiques FPGA/VHDL - M1 EEA/TSI
+# Travaux Pratiques FPGA/VHDL - M1 ESI/EEA
 
 <div align="center">
 
@@ -12,27 +12,34 @@
 ---
 
 **Auteurs :** Omar Lamari & Alexis Paris  
-**Établissement :** Université de Bourgogne Europe  
-**Filière :** M1 ESI/EEA - 2025/2026  
+**Etablissement :** Universite de Bourgogne Europe  
+**Filiere :** M1 ESI/EEA - 2025/2026  
 **Outil :** Vivado 2022.1 | **Carte cible :** Nexys A7-100T (Artix-7 XC7A100T)
 
 ---
 
-## 📋 Contenu du projet
+## Rapport et enonce
 
-| TP | Thème | Composants VHDL |
+- [Telecharger le rapport complet (PDF)](rapport/Rapport_TPs_FPGA_LAMARI_PARIS.pdf)
+- [Telecharger l'enonce officiel (PDF)](rapport/Enonce_TPs_FPGA_VHDL.pdf)
+
+---
+
+## Contenu du projet
+
+| TP | Theme | Composants VHDL |
 |----|-------|-----------------|
 | **TP 1** | Logique combinatoire | `Circuit1.vhd`, `Exercice.vhd` |
 | **TP 2** | Filtre anti-rebond (debounce) | `TP2.vhd`, `main.vhd` |
 | **TP 3 - P1** | Codeur 7 segments | `Codeur_7Seg.vhd` |
 | **TP 3 - P2** | Compteur modulo 10 + affichage | `compteur_mod10.vhd`, `div_freq.vhd`, `count_affich.vhd` |
-| **TP 3 - P3** | LFSR 4 bits (registre à décalage) | `lfsr4.vhd` |
+| **TP 3 - P3** | LFSR 4 bits (registre a decalage) | `lfsr4.vhd` |
 | **TP 3 - P4** | Minuterie avec affichage 7 seg | `minuterie_top.vhd` |
-| **TP 5** | Machine d'états finie (FSM distributeur) | `machine_etats_top.vhd` |
+| **TP 5** | Machine d'etats finie (FSM distributeur) | `machine_etats_top.vhd` |
 
 ---
 
-## 🔍 Détail des TPs
+## Detail des TPs
 
 ### TP 1 - Logique combinatoire
 
@@ -53,9 +60,9 @@ Conception et simulation de circuits combinatoires en VHDL.
 
 ### TP 2 - Filtre anti-rebond (Debounce)
 
-Implémentation d'un filtre anti-rebond matériel pour les boutons poussoirs de la Nexys A7.
+Implementation d'un filtre anti-rebond materiel pour les boutons poussoirs de la Nexys A7.
 
-- `TP2.vhd` - Filtre anti-rebond (compteur + registre à décalage)
+- `TP2.vhd` - Filtre anti-rebond (compteur + registre a decalage)
 - `main.vhd` - Top-level instanciant le filtre sur la carte
 - `filtre_anti_rebond_tb.vhd` - Testbench avec stimuli bouton
 - `TP2.xdc` - Mapping boutons et LEDs
@@ -64,20 +71,20 @@ Implémentation d'un filtre anti-rebond matériel pour les boutons poussoirs de 
 
 ### TP 3 - Afficheur 7 segments, Compteur, LFSR, Minuterie
 
-Projet progressif en 4 parties autour des afficheurs 7 segments et des circuits séquentiels.
+Projet progressif en 4 parties autour des afficheurs 7 segments et des circuits sequentiels.
 
 #### Partie 1 - Codeur 7 segments
-- `Codeur_7Seg.vhd` - Décodeur BCD → 7 segments (affichage d'un digit 0–9)
+- `Codeur_7Seg.vhd` - Decodeur BCD vers 7 segments (affichage d'un digit 0-9)
 - `Codeur_7Seg.xdc` - Contraintes d'affichage sur les 7 segments de la Nexys A7
 
 #### Partie 2 - Compteur modulo 10 avec affichage
-Architecture hiérarchique multi-composants :
+Architecture hierarchique multi-composants :
 
 ```
 count_affich (top)
-├── compteur_mod10   — Compteur 0 à 9 avec reset
-├── div_freq         — Diviseur de fréquence (100 MHz → 1 Hz)
-└── codeur_7seg      — Affichage du résultat sur 7 segments
+├── compteur_mod10   - Compteur 0 a 9 avec reset
+├── div_freq         - Diviseur de frequence (100 MHz vers 1 Hz)
+└── codeur_7seg      - Affichage du resultat sur 7 segments
 ```
 
 - `compteur_mod10_tb.vhd` - Testbench du compteur
@@ -87,31 +94,31 @@ count_affich (top)
 
 ![LFSR simulation](TP3_afficheur_compteur_LFSR/Partie3_LFSR/captures/tp3_exo2.png)
 
-- `lfsr4.vhd` - Registre à décalage à rétroaction linéaire 4 bits (séquence pseudo-aléatoire)
-- `lfsr4_tb.vhd` - Vérification de la séquence pseudo-aléatoire complète (15 états)
+- `lfsr4.vhd` - Registre a decalage a retroaction lineaire 4 bits (sequence pseudo-aleatoire)
+- `lfsr4_tb.vhd` - Verification de la sequence pseudo-aleatoire complete (15 etats)
 
 #### Partie 4 - Minuterie
-- `minuterie_top.vhd` - Minuterie complète avec affichage 2 chiffres sur 7 segments (secondes + dizaines)
+- `minuterie_top.vhd` - Minuterie complete avec affichage 2 chiffres sur 7 segments (secondes + dizaines)
 - `minuterie_tb.vhd` - Testbench de la minuterie
 - `tp3_exo3.xdc` - Horloge, reset, enable, afficheur double chiffre
 
 ---
 
-### TP 5 - Machine d'états finie (FSM - Distributeur)
+### TP 5 - Machine d'etats finie (FSM - Distributeur)
 
-Conception d'une FSM de type Moore modélisant un distributeur automatique de boissons.
+Conception d'une FSM de type Moore modelisant un distributeur automatique de boissons.
 
 ```
-États : ATTENTE → INSERTION_50 → INSERTION_100 → DISTRIBUTION → RENDU_MONNAIE → ATTENTE
+Etats : ATTENTE -> INSERTION_50 -> INSERTION_100 -> DISTRIBUTION -> RENDU_MONNAIE -> ATTENTE
 ```
 
-- `machine_etats_top.vhd` - FSM complète avec gestion des états, transitions et sorties
-- `machine_etats_top_tb.vhd` - Testbench simulant les séquences d'insertion de pièces
-- `TP5.xdc` - Boutons (pièces), LEDs (état), afficheur
+- `machine_etats_top.vhd` - FSM complete avec gestion des etats, transitions et sorties
+- `machine_etats_top_tb.vhd` - Testbench simulant les sequences d'insertion de pieces
+- `TP5.xdc` - Boutons (pieces), LEDs (etat), afficheur
 
 ---
 
-## 📁 Structure du dépôt
+## Structure du depot
 
 ```
 Tps-FPGA-VHDL-M1-EEA-TSI/
@@ -120,8 +127,8 @@ Tps-FPGA-VHDL-M1-EEA-TSI/
 ├── .gitignore
 │
 ├── rapport/
-│   ├── Rapport_TPs_FPGA_LAMARI_PARIS.pdf   ← Rapport complet
-│   └── Enonce_TPs_FPGA_VHDL.pdf            ← Énoncé officiel
+│   ├── Rapport_TPs_FPGA_LAMARI_PARIS.pdf   <- Rapport complet
+│   └── Enonce_TPs_FPGA_VHDL.pdf            <- Enonce officiel
 │
 ├── TP1_logique_combinatoire/
 │   ├── src/            Circuit1.vhd, Exercice.vhd
@@ -136,20 +143,9 @@ Tps-FPGA-VHDL-M1-EEA-TSI/
 │
 ├── TP3_afficheur_compteur_LFSR/
 │   ├── Partie1_codeur_7seg/
-│   │   ├── src/        Codeur_7Seg.vhd
-│   │   └── constraints/ Codeur_7Seg.xdc
 │   ├── Partie2_compteur_mod10/
-│   │   ├── src/        compteur_mod10.vhd, div_freq.vhd, codeur_7seg.vhd, count_affich.vhd
-│   │   ├── sim/        compteur_mod10_tb.vhd
-│   │   └── constraints/ TP3.xdc
 │   ├── Partie3_LFSR/
-│   │   ├── src/        lfsr4.vhd
-│   │   ├── sim/        lfsr4_tb.vhd
-│   │   └── captures/   tp3_exo2.png
 │   └── Partie4_minuterie/
-│       ├── src/        minuterie_top.vhd
-│       ├── sim/        minuterie_tb.vhd
-│       └── constraints/ tp3_exo3.xdc
 │
 └── TP5_machine_etats_FSM/
     ├── src/            machine_etats_top.vhd
@@ -159,12 +155,12 @@ Tps-FPGA-VHDL-M1-EEA-TSI/
 
 ---
 
-## ⚙️ Utilisation dans Vivado
+## Utilisation dans Vivado
 
 1. Ouvrir **Vivado 2022.1**
-2. **File → New Project** → pointer vers le dossier du TP souhaité
+2. **File -> New Project** -> pointer vers le dossier du TP souhaite
 3. Ajouter les fichiers `src/*.vhd` comme **Design Sources**
 4. Ajouter les fichiers `sim/*.vhd` comme **Simulation Sources**
 5. Ajouter le fichier `constraints/*.xdc` comme **Constraints**
 6. Cible : `xc7a100tcsg324-1` (Nexys A7-100T)
-7. **Run Simulation** → **Run Synthesis** → **Run Implementation** → **Generate Bitstream**
+7. **Run Simulation** -> **Run Synthesis** -> **Run Implementation** -> **Generate Bitstream**
