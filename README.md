@@ -1,4 +1,4 @@
-# 🔌 Travaux Pratiques FPGA/VHDL — M1 ESI/EEA
+# Travaux Pratiques FPGA/VHDL - M1 EEA/TSO
 
 <div align="center">
 
